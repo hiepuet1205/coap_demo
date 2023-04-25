@@ -91,5 +91,6 @@
     <orderEntry type="library" name="Maven: org.eclipse.californium:element-connector:2.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20210307" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.integration:spring-integration-coap:5.5.0" level="project" />
   </component>
 </module>

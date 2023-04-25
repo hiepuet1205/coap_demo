@@ -6,7 +6,6 @@ import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.Utils;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
-import org.eclipse.californium.core.coap.Request;
 import org.eclipse.californium.core.coap.Response;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.json.JSONArray;
@@ -32,68 +31,13 @@ public class SensorResource extends CoapResource {
         getAttributes().setObservable(); // mark observable in the Link-Format
     }
 
-    public boolean checkSensorExistsById(List<Sensor> sensors, String id) {
-        for (Sensor sensor : sensors) {
-            if (sensor.getId().equals(id)) {
-                return true; // Nếu tìm thấy Sensor có ID trùng khớp, trả về true
-            }
-        }
-        return false; // Nếu không tìm thấy Sensor nào có ID trùng khớp, trả về false
-    }
-
-    public void updateSensorById(List<Sensor> sensors, String id, Double value) {
-        for (int i = 0; i < sensors.size(); i++) {
-            Sensor sensor = sensors.get(i);
-            if (sensor.getId().equals(id)) {
-                // Nếu tìm thấy Sensor có ID trùng khớp, thực hiện cập nhật
-                Sensor newSensor = new Sensor(id, value);
-                sensors.set(i, newSensor);
-                break; // Thoát khỏi vòng lặp sau khi cập nhật Sensor
-            }
-        }
-    }
-
-
     @Override
     public void handleGET(CoapExchange exchange) {
 
         logger.info("Request Pretty Print:\n{}", Utils.prettyPrint(exchange.advanced().getRequest()));
 
-        // Lấy params từ yêu cầu CoAP
-//        Request request = exchange.advanced().getRequest();
-//        String param1 = request.getOptions().getUriQuery().get(0);
-////        String param2 = request.getOptions().getUriQuery().getFirst("param2");
-//
-//        System.out.println(param1);
-
-        // Tạo đối tượng JSON
-        JSONObject jsonObject = new JSONObject();
-
-        // Thiết lập thuộc tính "success" với giá trị true
-        jsonObject.put("success", true);
-
-        // Thiết lập thuộc tính "result" với giá trị số sensor
-        jsonObject.put("result", sensors.size());
-
-        // Tạo đối tượng JsonArray để lưu trữ danh sách sensors
-        JSONArray jsonArray = new JSONArray();
-
-        // Duyệt qua danh sách sensors
-        for (Sensor sensor : sensors) {
-            // Tạo đối tượng JSON con cho từng đối tượng Sensor
-            JSONObject sensorObject = new JSONObject();
-            sensorObject.put("id", sensor.getId());
-            sensorObject.put("value", sensor.getValue());
-
-            // Thêm đối tượng Sensor vào JsonArray
-            jsonArray.put(sensorObject);
-        }
-
-        // Thiết lập thuộc tính "data" trong JsonObject là JsonArray đã tạo
-        jsonObject.put("data", jsonArray);
-
         // Chuyển đối tượng JsonObject thành chuỗi JSON
-        String jsonString = jsonObject.toString();
+        String jsonString = sensorsToJsonObject().toString();
 
         // Trả về chuỗi JSON làm nội dung của phản hồi
         exchange.respond(CoAP.ResponseCode.CONTENT, jsonString, MediaTypeRegistry.APPLICATION_JSON);
@@ -106,7 +50,6 @@ public class SensorResource extends CoapResource {
 
         // Chuyển đổi chuỗi payload thành đối tượng JSONObject
         String payloadStr = new String(payload);
-//        System.out.println(payloadStr);
 
         JSONObject jsonObject = new JSONObject(payloadStr);
 
@@ -114,21 +57,69 @@ public class SensorResource extends CoapResource {
         String id = jsonObject.getString("id");
         Double value = jsonObject.getDouble("value");
 
-//        System.out.println("id: " + id);
-//        System.out.println("value: " + value);
+        Sensor newSensor = new Sensor(id, value);
 
-        if(!checkSensorExistsById(sensors, id)){
-            Sensor newSensor = new Sensor(id, value);
+        if(!checkSensorExistsById(id)){
             sensors.add(newSensor);
-        }else{
-            updateSensorById(sensors, id, value);
-        }
 
-        changed();
+            SensorSubResource sensorSubResource = new SensorSubResource(newSensor);
+            this.add(sensorSubResource);
+
+            changed();
+        }else{
+            updateSensorById(newSensor);
+        }
 
         // Gửi phản hồi về cho yêu cầu CoAP
         Response response = new Response(CoAP.ResponseCode.CHANGED);
         response.setPayload("Đã nhận và xử lý payload thành công".getBytes());
         exchange.respond(response);
+    }
+
+    public boolean checkSensorExistsById(String id) {
+        for (Sensor sensor : this.sensors) {
+            if (sensor.getId().equals(id)) {
+                return true; // Nếu tìm thấy Sensor có ID trùng khớp, trả về true
+            }
+        }
+        return false; // Nếu không tìm thấy Sensor nào có ID trùng khớp, trả về false
+    }
+
+    public void updateSensorById(Sensor newSensor) {
+        for (int i = 0; i < this.sensors.size(); i++) {
+            Sensor sensor = this.sensors.get(i);
+            if (sensor.getId().equals(newSensor.getId())) {
+                // Nếu tìm thấy Sensor có ID trùng khớp, thực hiện cập nhật
+                this.sensors.set(i, newSensor);
+                break; // Thoát khỏi vòng lặp sau khi cập nhật Sensor
+            }
+        }
+
+        changed();
+    }
+
+    private JSONObject sensorsToJsonObject() {
+        // Tạo đối tượng JSON
+        JSONObject jsonObject = new JSONObject();
+
+        // Thiết lập thuộc tính "success" với giá trị true
+        jsonObject.put("success", true);
+
+        // Thiết lập thuộc tính "result" với giá trị số sensor
+        jsonObject.put("result", this.sensors.size());
+
+        // Tạo đối tượng JsonArray để lưu trữ danh sách sensors
+        JSONArray jsonArray = new JSONArray();
+
+        // Duyệt qua danh sách sensors
+        for (Sensor sensor : this.sensors) {
+            // Thêm đối tượng Sensor vào JsonArray
+            jsonArray.put(sensor.sensorToJsonObject());
+        }
+
+        // Thiết lập thuộc tính "data" trong JsonObject là JsonArray đã tạo
+        jsonObject.put("data", jsonArray);
+
+        return jsonObject;
     }
 }
