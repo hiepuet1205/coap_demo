@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class CoapGetClientProcess {
@@ -30,6 +31,12 @@ public class CoapGetClientProcess {
                 String content = response.getResponseText();
                 logger.info("Notification Response Pretty Print: \n{}", Utils.prettyPrint(response));
                 logger.info("NOTIFICATION Body: " + content);
+
+                try (FileOutputStream out = new FileOutputStream("src/main/resources/output.json")) {
+                    out.write(response.getPayload());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             public void onError() {
