@@ -1,3 +1,4 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from matplotlib.animation import FuncAnimation
@@ -7,7 +8,8 @@ import json
 fig = plt.figure()
 x = []
 y = []
-ln, = plt.plot_date(x, y, '-')
+ln, = plt.plot(x, y, '-')
+formatter = matplotlib.dates.DateFormatter('%H:%M:%S')
 
 
 def update(frame):
@@ -30,6 +32,7 @@ def update(frame):
 
 animation = FuncAnimation(fig, update, interval=1000)
 
+fig.gca().xaxis.set_major_formatter(formatter)
 plt.gcf().autofmt_xdate()
 plt.title('Sensor value over time')
 plt.ylabel('Value')
