@@ -10,7 +10,7 @@ import java.io.IOException;
 public class CoapPostSensorProcess {
     public static final String SENSOR_LIST_URL = "coap://localhost:5683/sensor/"; // Địa chỉ URI của server CoAP
 
-    private final static Integer NUM_SENSORS = 1;
+    private final static Integer NUM_SENSORS = 10;
 
     public static void main(String[] args) throws ConnectorException, IOException {
         // Khởi tạo và chạy các luồng Sensor

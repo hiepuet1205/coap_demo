@@ -98,7 +98,7 @@ public class SensorResource extends CoapResource {
         changed();
     }
 
-    private JSONObject sensorsToJsonObject() {
+    public JSONObject sensorsToJsonObject() {
         // Tạo đối tượng JSON
         JSONObject jsonObject = new JSONObject();
 
