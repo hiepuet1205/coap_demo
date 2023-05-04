@@ -30,7 +30,7 @@ public class AddSensorResource extends CoapResource {
 
         JSONObject jsonObject = new JSONObject();
 
-        jsonObject.put("Number sensor currently", NUM_SENSORS_CURRENTLY);
+        jsonObject.put("numberSensorCurrently", NUM_SENSORS_CURRENTLY);
 
         // Trả về chuỗi JSON làm nội dung của phản hồi
         exchange.respond(CoAP.ResponseCode.CONTENT, jsonObject.toString(), MediaTypeRegistry.APPLICATION_JSON);
