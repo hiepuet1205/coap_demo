@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12ffd7b1-c803-48c6-adb6-4abe586d7a95" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coap_demo.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapClientManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapGetClientProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapGetClientProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapPostSensorProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapPostSensorProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/server/CoapDemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/server/CoapDemoApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/server/resource/AddSensorResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/server/resource/AddSensorResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapGetClientProcess$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapGetClientProcess$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapGetClientProcess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapGetClientProcess.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapPostSensorProcess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapPostSensorProcess.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,23 +46,23 @@
     <option name="showLibraryContents" value="true" />
     <option name="showModules" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/ManhSon/Documents/Kì 2 năm 3/LTM/ProjectLTM/DemoCoAP/coap_demo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ManhSon/Documents/Kì 2 năm 3/LTM/ProjectLTM/DemoCoAP/coap_demo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.CoapGetClientProcess">
     <configuration name="CoapGetClientProcess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.coap_demo.client.CoapGetClientProcess" />
@@ -94,6 +97,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.CoapGetClientProcess" />
+      <item itemvalue="Application.CoapPostSensorProcess" />
+      <item itemvalue="Spring Boot.CoapDemoApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.CoapGetClientProcess" />

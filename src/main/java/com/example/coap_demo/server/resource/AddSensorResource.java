@@ -9,10 +9,15 @@ import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Response;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.InvalidParameterException;
 
 public class AddSensorResource extends CoapResource {
+
+    private final static Logger logger = LoggerFactory.getLogger(AddSensorResource.class);
+
     private static Integer NUM_SENSORS_CURRENTLY = 0;
 
     public AddSensorResource(String name) {
@@ -55,14 +60,7 @@ public class AddSensorResource extends CoapResource {
         // cap nhat number sensor currently
         NUM_SENSORS_CURRENTLY += numberNewSensor;
 
-//        CoapPostSensorProcess coapPostSensorProcess = new CoapPostSensorProcess();
-//        if (numberNewSensor > 1) {
-//            coapPostSensorProcess.handleCreateManySensor(numberNewSensor);
-//        } else if ( numberNewSensor == 1) {
-//            coapPostSensorProcess.handleCreateOneSensor();
-//        } else {
-//            throw new InvalidParameterException("Number sensor > 0");
-//        }
+        changed();
 
         Response response = new Response(CoAP.ResponseCode.CHANGED);
         response.setPayload("Đã nhận và xử lý payload thành công".getBytes());

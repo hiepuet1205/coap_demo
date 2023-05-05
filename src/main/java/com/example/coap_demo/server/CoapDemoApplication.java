@@ -1,6 +1,7 @@
 package com.example.coap_demo.server;
 
 
+import com.example.coap_demo.server.resource.AddSensorResource;
 import com.example.coap_demo.server.resource.SensorResource;
 import org.eclipse.californium.core.CoapServer;
 import org.eclipse.californium.elements.exception.ConnectorException;
@@ -17,6 +18,8 @@ public class CoapDemoApplication {
 
         // Đăng ký các tài nguyên (resources) vào máy chủ CoAP
         coapServer.add(new SensorResource("sensor"));
+
+        coapServer.add(new AddSensorResource("addSensor"));
 
         // Khởi động máy chủ CoAP
         coapServer.start();
