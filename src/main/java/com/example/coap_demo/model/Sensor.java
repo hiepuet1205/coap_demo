@@ -13,12 +13,12 @@ public class Sensor {
     private Double value;
     private Boolean isRunning = true;
 
-    public Sensor(String id, Double value){
+    public Sensor(String id, Double value) {
         this.id = id;
         this.value = value;
     }
 
-    public JSONObject sensorToJsonObject(){
+    public JSONObject sensorToJsonObject() {
         // Tạo đối tượng JSON
         JSONObject jsonObject = new JSONObject();
 
