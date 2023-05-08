@@ -50,7 +50,7 @@ public class SensorThread implements Runnable {
             public void onError() {
                 logger.error("OBSERVING FAILED");
             }
-        };
+        });
     }
 
     private void postToServer() {
