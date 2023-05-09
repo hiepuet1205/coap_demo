@@ -16,7 +16,7 @@ public class Sensor {
     private Boolean isRunning = true;
     private String lastUpdate;
 
-    public Sensor(String id, Double value){
+    public Sensor(String id, Double value) {
         this.id = id;
         this.value = value;
 
@@ -27,7 +27,7 @@ public class Sensor {
         this.lastUpdate = lastUpdate;
     }
 
-    public JSONObject sensorToJsonObject(){
+    public JSONObject sensorToJsonObject() {
         // Tạo đối tượng JSON
         JSONObject jsonObject = new JSONObject();
 
