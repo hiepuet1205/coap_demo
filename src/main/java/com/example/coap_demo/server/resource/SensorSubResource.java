@@ -7,7 +7,6 @@ import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Response;
 import org.eclipse.californium.core.server.resources.CoapExchange;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,12 +52,15 @@ public class SensorSubResource extends CoapResource {
 
         JSONObject jsonObject = new JSONObject(payloadStr);
 
+        System.out.println(jsonObject);
+
         // Lấy giá trị từ đối tượng JSONObject
         String id = jsonObject.getString("id");
         Double value = jsonObject.getDouble("value");
         Boolean isRunning = jsonObject.getBoolean("isRunning");
 
-        Sensor newSensor = new Sensor(id, value, isRunning);
+        Sensor newSensor = new Sensor(id, value);
+        newSensor.setIsRunning(isRunning);
         this.sensor = newSensor;
 
         changed();

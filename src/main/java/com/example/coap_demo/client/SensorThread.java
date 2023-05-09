@@ -121,7 +121,7 @@ public class SensorThread implements Runnable{
         };
 
         // Lên lịch cho công việc chạy sau mỗi 1 giây (1000 milliseconds)
-        timer.scheduleAtFixedRate(task, 0, 1000);
+        timer.scheduleAtFixedRate(task, 0, 5000);
     }
 
     @Override
