@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12ffd7b1-c803-48c6-adb6-4abe586d7a95" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapClientManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapGetClientProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapGetClientProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapPostSensorProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/client/CoapPostSensorProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/server/CoapDemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/server/CoapDemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/server/resource/AddSensorResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coap_demo/server/resource/AddSensorResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapGetClientProcess$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapGetClientProcess$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapGetClientProcess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapGetClientProcess.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapPostSensorProcess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/coap_demo/client/CoapPostSensorProcess.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/coap_demo/server/CoapDemoApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/coap_demo/server/CoapDemoApplication.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +55,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;eb2db413d7464e878ad89ae8da179725&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -118,6 +114,8 @@
       <option name="presentableId" value="Default" />
       <updated>1683100781114</updated>
       <workItem from="1683100783934" duration="11361000" />
+      <workItem from="1683604978695" duration="291000" />
+      <workItem from="1684313786198" duration="1138000" />
     </task>
     <servers />
   </component>
