@@ -29,15 +29,78 @@
 
 **Tên đề tài:** _CoAP ioT Demo_
 
+## Mô tả bài toán
 
-## Sử dụng
+- Xây dựng chương trình thực hiện giao thức **_CoAP_** cho mạng cảm biến không dây bao gồm các thành phần 
+    •	Gateway đóng vai trò server
+    •	Chương trình sinh dữ liệu cho các cảm biến để gửi đến server. Chương trình có giao diện hiển thị phía server.
+    •	Chương trình cho phép các cảm biến nhận dữ liệu (ví dụ dữ liệu điều khiển từ gateway).
 
-- Java
-- Python
-- CoAP
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ ## Yêu cầu bài toán:
+
+ 1. Chương trình hiển thị thông tin các cảm biến thực hiện kết nối với gateway.
+ 2.	Chương trình sinh dữ liệu cho các cảm biến: tự động sinh dữ liệu cảm biến và gửi dữ liệu lên gateway. 
+ Chương trình hiển thị dữ liệu nhận được phía gateway (sử dụng các biểu đồ line chart, bar chart, pie chart để hiển thị)
+ 3.	Chương trình hiển thị thông tin điều khiển tại các cảm biến (được gửi từ gateway)
+ 4.	Chương trình hiển thị đánh giá số lượng tối đa các node cảm biến có thể kết nối đến gateway.
+ 5.	Chương trình hiển thị đánh giá hiệu năng của giao thức: Throughput, delay, v.v. khi số lượng node cảm biến tăng lên.
+ 6. Sử dụng hệ điều hành: Linux
+ 7. Sử dụng các ngôn ngữ lập trình: C, C++, Java
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+## Quy tắc đánh giá điểm:
+- Điểm chương trình (80%) 
+    + Làm được các yêu cầu I, II, III: 50% điểm
+    + Làm được các yêu cầu IV: 15%
+    + Làm được các yêu cầu V: 15%
+- Điểm tài liệu: 15% 
+    + Trình bày đầy đủ thuật toán, giao thức, thiết kế chương trình
+    + Cần ghi lại log quá trình làm việc của nhóm và vai trò của các thành viên 
+trong nhóm
+    + Yêu cầu sử dụng github.com để cập nhật code chương trình
+- Điểm giao diện: 5%
+    + Giao diện thân thiện, dễ dùng
+
+
+## Ngôn ngữ lập trình sử dụng:
+
+- Front-end:
+    + HTML
+    + CSS
+    + Javascript
+- Back-end:
+    + Java
+- UI:
+    + Python
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Thuật toán
+
+- Chúng em sử dụng những thuật toán sau đây:
+ - 
+ - 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Giao thức
+
+- Trong chương trình này, chúng em sử dụng các giao thức sau đây:
+    - CoAP (như đề bài yêu cầu)
+    - 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Thiết kế chương trình
+    - 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Quá trình làm việc của nhóm:
+    - 21h thứ 5 (16/3), cả nhóm tiến hành họp online trên teams để phân chia công việc.
+    - 21h thứ 5, 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Vai trò từng thành viên
 
@@ -49,3 +112,9 @@
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Kết luận và đánh giá
+ - Chương trình đã hoàn thành những yêu cầu sau đây:
+    - Làm được các yêu cầu I, II, III
+    - Hoàn thành giao diện 
