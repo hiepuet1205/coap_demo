@@ -11,8 +11,12 @@ public class CoapClientManager {
     private static int NUMBER_SENSOR = 0;
     private static final String COAP_SERVER_ADD_URL = "coap://localhost:5683/addSensor"; // Địa chỉ URI của server CoAP
     private CoapPostSensorProcess coapPostSensorProcess;
+    private static long startTime; // start do luong
+    private static long endTime; // end do luong
+    private static int totalPacketSent; // total_packet
 
     public static void main(String[] args) {
+        startTime = System.currentTimeMillis();
         CoapClient clientManager = new CoapClient(COAP_SERVER_ADD_URL);
 
         logger.info("OBSERVING ... {}", COAP_SERVER_ADD_URL);
@@ -43,6 +47,13 @@ public class CoapClientManager {
 
                 logger.info("Notification Response Pretty Print: \n{}", Utils.prettyPrint(response));
                 logger.info("NOTIFICATION return the number sensor: " + jsonObject);
+                totalPacketSent++;
+                 // Kết thúc thời gian đo
+                endTime = System.currentTimeMillis();
+
+                // Tính toán throughput
+                double throughput = (double) totalPacketSent / (double) (endTime - startTime);
+                logger.info("Throughput: " + throughput + " packets/ms");
             }
 
             public void onError() {

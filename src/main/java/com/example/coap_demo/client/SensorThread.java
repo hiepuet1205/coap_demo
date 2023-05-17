@@ -16,16 +16,23 @@ import java.util.TimerTask;
 import static com.example.coap_demo.client.CoapPostSensorProcess.SENSOR_LIST_URL;
 
 public class SensorThread implements Runnable {
+    private long startTime; // Thời gian bắt đầu của luồng
     private Sensor sensor;
     private final static Logger logger = LoggerFactory.getLogger(SensorThread.class);
     private String SENSOR_URL;
     private CoapClient sensorListClient = new CoapClient(SENSOR_LIST_URL);
     private CoapClient sensorClient;
+    private static long totalDelay; // Tổng thời gian độ trễ của các gói tin
+    private static int totalPacketsReceived; // Tổng số gói tin đã nhận
+    private static double totalEnergyConsumption = 0; // Tổng năng lượng tiêu thụ của các node
+    private static double totalRuntime = 0; // Tổng thời gian chạy của các node
+    
 
     public SensorThread(Sensor sensor) {
         this.sensor = sensor;
         this.SENSOR_URL = SENSOR_LIST_URL + this.sensor.getId();
         this.sensorClient = new CoapClient(SENSOR_URL);
+        startTime = System.currentTimeMillis(); // Gán thời gian bắt đầu khi khởi tạo luồng
     }
 
     private void getObserve() {
@@ -45,6 +52,13 @@ public class SensorThread implements Runnable {
 
                 logger.info("Notification Response Pretty Print: \n{}", Utils.prettyPrint(response));
                 logger.info("NOTIFICATION Body: " + jsonObject);
+                totalPacketsReceived++;
+                long packetDelay = System.currentTimeMillis() - startTime; // Thời gian độ trễ của gói tin hiện tại
+                totalDelay += packetDelay;
+
+                // Trước khi kết thúc chương trình
+                double averageDelay = (double) totalDelay / (double) totalPacketsReceived;
+                logger.info("Average Delay: " + averageDelay + " ms");
             }
 
             public void onError() {
@@ -78,6 +92,15 @@ public class SensorThread implements Runnable {
         }
     }
 
+    private void calculateEnergyConsumption(double runtime, double powerConsumption) {
+        double energyConsumption = runtime * powerConsumption;
+        totalEnergyConsumption += energyConsumption;
+        totalRuntime += runtime;
+    
+        double averageEnergyConsumption = totalEnergyConsumption / totalRuntime;
+        logger.info("Average Energy Consumption: " + averageEnergyConsumption + " J/s");
+    }
+
     private void continuousPutToServer() {
         // Tạo đối tượng Timer
         Timer timer = new Timer();
@@ -96,6 +119,8 @@ public class SensorThread implements Runnable {
                 CoapResponse coapResp = null;
 
                 Boolean isRunning = sensor.getIsRunning();
+                double runtime = 5; // Thời gian chạy của node trong 1 lần gửi (đơn vị: giây)
+                double powerConsumption = 0.1; // Công suất tiêu thụ của node (đơn vị: W)
 
                 if(isRunning){
                     try {
@@ -112,6 +137,7 @@ public class SensorThread implements Runnable {
                             logger.info("Token: " + coapResp.advanced().getTokenString());
 
                             sensor.randomTemperature();
+                            calculateEnergyConsumption(runtime, powerConsumption);
                         }
                     } catch (ConnectorException | IOException e) {
                         e.printStackTrace();
