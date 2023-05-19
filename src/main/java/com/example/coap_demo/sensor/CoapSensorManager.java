@@ -1,4 +1,4 @@
-package com.example.coap_demo.client;
+package com.example.coap_demo.sensor;
 
 import org.eclipse.californium.core.*;
 import org.eclipse.californium.core.coap.Request;
@@ -6,12 +6,10 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CoapClientManager {
-    private final static Logger logger = LoggerFactory.getLogger(CoapClientManager.class);
+public class CoapSensorManager {
+    private final static Logger logger = LoggerFactory.getLogger(CoapSensorManager.class);
     private static int NUMBER_SENSOR = 0;
     private static final String COAP_SERVER_ADD_URL = "coap://localhost:5683/addSensor"; // Địa chỉ URI của server CoAP
-    private CoapPostSensorProcess coapPostSensorProcess;
-
     public static void main(String[] args) {
         CoapClient clientManager = new CoapClient(COAP_SERVER_ADD_URL);
 
@@ -33,12 +31,13 @@ public class CoapClientManager {
                     int numberCreateSensor = newNumber - NUMBER_SENSOR;
                     NUMBER_SENSOR = newNumber;
 
-                    CoapPostSensorProcess coapPostSensorProcess = new CoapPostSensorProcess();
+                    CoapUtils coapUtils = new CoapUtils();
                     if (numberCreateSensor > 1) {
-                        coapPostSensorProcess.handleCreateManySensor(numberCreateSensor);
+                        coapUtils.handleCreateManySensor(numberCreateSensor);
                     } else if ( numberCreateSensor == 1) {
-                        coapPostSensorProcess.handleCreateOneSensor();
+                        coapUtils.handleCreateOneSensor();
                     }
+
                 }
 
                 logger.info("Notification Response Pretty Print: \n{}", Utils.prettyPrint(response));

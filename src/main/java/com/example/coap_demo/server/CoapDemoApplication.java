@@ -2,6 +2,7 @@ package com.example.coap_demo.server;
 
 
 import com.example.coap_demo.server.resource.AddSensorResource;
+import com.example.coap_demo.server.resource.PerformanceResource;
 import com.example.coap_demo.server.resource.SensorResource;
 import org.eclipse.californium.core.CoapServer;
 import org.eclipse.californium.core.server.resources.Resource;
@@ -17,10 +18,11 @@ public class CoapDemoApplication {
     }
 
     @Bean
-    public CoapServer coapServer(SensorResource sensorResource, AddSensorResource addSensorResource) {
+    public CoapServer coapServer(SensorResource sensorResource, AddSensorResource addSensorResource, PerformanceResource performanceResource) {
         CoapServer coapServer = new CoapServer();
         coapServer.add(sensorResource);
         coapServer.add(addSensorResource);
+        coapServer.add(performanceResource);
         coapServer.start();
         return coapServer;
     }
@@ -33,5 +35,10 @@ public class CoapDemoApplication {
     @Bean
     public AddSensorResource addSensorResource() {
         return new AddSensorResource("addSensor");
+    }
+
+    @Bean
+    public PerformanceResource performanceResource() {
+        return new PerformanceResource("performance");
     }
 }

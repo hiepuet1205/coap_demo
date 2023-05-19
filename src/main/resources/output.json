@@ -1,8 +1,1 @@
-// check and return result
-{
-  "result": 1,
-  "data": [
-    { "isRunning": true, "id": "Sensor001", "value": 38.52890167428071 }
-  ],
-  "success": true
-}
+{"numberSensorCurrently":1}

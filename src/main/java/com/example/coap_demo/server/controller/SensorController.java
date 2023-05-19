@@ -2,6 +2,7 @@ package com.example.coap_demo.server.controller;
 
 import com.example.coap_demo.model.AddSensorData;
 import com.example.coap_demo.model.Sensor;
+import com.example.coap_demo.server.resource.PerformanceResource;
 import com.example.coap_demo.server.resource.SensorResource;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,13 +26,15 @@ import java.io.IOException;
 public class SensorController {
     private final SensorResource sensorResource;
 
-    private static final String COAP_SERVER_URL = "coap://localhost:5683/sensor"; // Địa chỉ URL của server CoAP
-    private static final String ADD_SENSOR_URL = "coap://localhost:5683/addSensor"; // Địa chỉ URL của server CoAP
+    private final PerformanceResource performanceResource;
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private static final String COAP_SERVER_URL = "coap://localhost:5683/sensor";
+    private static final String ADD_SENSOR_URL = "coap://localhost:5683/addSensor";
+    private static final String COAP_PERFORMANCE_URL = "coap://localhost:5683/performance";
 
-    public SensorController(SensorResource sensorResource) {
+    public SensorController(SensorResource sensorResource, PerformanceResource performanceResource) {
         this.sensorResource = sensorResource;
+        this.performanceResource = performanceResource;
     }
 
     @PutMapping(value = "/addSensor")
@@ -101,6 +104,39 @@ public class SensorController {
                 public void onLoad(CoapResponse coapResponse) {
                     // Lấy dữ liệu sensors từ SensorResource
                     String jsonString = sensorResource.sensorsToJsonObject().toString();
+
+                    // Tạo đối tượng ServerSentEvent
+                    ServerSentEvent<String> event = ServerSentEvent.builder(jsonString)
+                            .id(Long.toString(System.currentTimeMillis()))
+                            .build();
+
+                    // Trả về ServerSentEvent
+                    emitter.next(event);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        });
+    }
+
+    @GetMapping(value = "/performance", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET})
+    public Flux<ServerSentEvent<String>> observePerformance() {
+        return Flux.create(emitter -> {
+            CoapClient client = new CoapClient(COAP_PERFORMANCE_URL);
+
+            Request request = Request.newGet().setURI(COAP_PERFORMANCE_URL).setObserve();
+            request.setConfirmable(true);
+
+            CoapObserveRelation relation = client.observe(request, new CoapHandler() {
+
+                @Override
+                public void onLoad(CoapResponse coapResponse) {
+                    // Lấy dữ liệu sensors từ SensorResource
+                    String jsonString = performanceResource.performanceToJsonObject().toString();
 
                     // Tạo đối tượng ServerSentEvent
                     ServerSentEvent<String> event = ServerSentEvent.builder(jsonString)

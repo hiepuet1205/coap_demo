@@ -1,4 +1,4 @@
-package com.example.coap_demo.client;
+package com.example.coap_demo.sensor;
 
 import org.eclipse.californium.core.*;
 import org.eclipse.californium.core.coap.Request;
@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class CoapGetClientProcess {
-    private static final String COAP_SERVER_URL = "coap://localhost:5683/sensor"; // Địa chỉ URI của server CoAP
+    private static final String COAP_SERVER_URL = "coap://localhost:5683/addSensor"; // Địa chỉ URI của server CoAP
 
     private final static Logger logger = LoggerFactory.getLogger(CoapGetClientProcess.class);
 

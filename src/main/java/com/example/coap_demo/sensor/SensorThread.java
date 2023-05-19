@@ -1,4 +1,4 @@
-package com.example.coap_demo.client;
+package com.example.coap_demo.sensor;
 
 import com.example.coap_demo.model.Sensor;
 import org.eclipse.californium.core.*;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.example.coap_demo.client.CoapPostSensorProcess.SENSOR_LIST_URL;
+import static com.example.coap_demo.sensor.CoapUtils.SENSOR_LIST_URL;
 
 public class SensorThread implements Runnable {
     private Sensor sensor;
