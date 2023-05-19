@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.json.JSONObject;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 @Data @NoArgsConstructor @AllArgsConstructor
@@ -12,13 +14,20 @@ public class Sensor {
     private String id;
     private Double value;
     private Boolean isRunning = true;
+    private String lastUpdate;
 
-    public Sensor(String id, Double value){
+    public Sensor(String id, Double value) {
         this.id = id;
         this.value = value;
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String lastUpdate = now.format(formatter);
+
+        this.lastUpdate = lastUpdate;
     }
 
-    public JSONObject sensorToJsonObject(){
+    public JSONObject sensorToJsonObject() {
         // Tạo đối tượng JSON
         JSONObject jsonObject = new JSONObject();
 
@@ -26,6 +35,7 @@ public class Sensor {
         jsonObject.put("id", this.id);
         jsonObject.put("value", this.getValue());
         jsonObject.put("isRunning", this.isRunning);
+        jsonObject.put("lastUpdate", this.lastUpdate);
 
         return jsonObject;
     }

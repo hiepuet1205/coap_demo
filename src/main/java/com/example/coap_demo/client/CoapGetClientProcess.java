@@ -1,14 +1,12 @@
 package com.example.coap_demo.client;
 
-import com.example.coap_demo.model.Sensor;
 import org.eclipse.californium.core.*;
-import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.Request;
 import org.eclipse.californium.elements.exception.ConnectorException;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class CoapGetClientProcess {
@@ -30,6 +28,12 @@ public class CoapGetClientProcess {
                 String content = response.getResponseText();
                 logger.info("Notification Response Pretty Print: \n{}", Utils.prettyPrint(response));
                 logger.info("NOTIFICATION Body: " + content);
+
+                try (FileOutputStream out = new FileOutputStream("src/main/resources/output.json")) {
+                    out.write(response.getPayload());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             public void onError() {

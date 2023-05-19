@@ -1,6 +1,10 @@
 package com.example.coap_demo.client;
 
 import com.example.coap_demo.model.Sensor;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7fc1b347d5239db6584ea6157cc6831c11a3ed14
 
 public class CoapPostSensorProcess {
     public static final String SENSOR_LIST_URL = "coap://localhost:5683/sensor/"; // Địa chỉ URI của server CoAP

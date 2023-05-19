@@ -1,9 +1,13 @@
 package com.example.coap_demo.server.resource;
 
+<<<<<<< HEAD
 import com.example.coap_demo.client.CoapPostSensorProcess;
 import com.example.coap_demo.model.Sensor;
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.Utils;
+=======
+import org.eclipse.californium.core.CoapResource;
+>>>>>>> 7fc1b347d5239db6584ea6157cc6831c11a3ed14
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Response;
@@ -12,8 +16,11 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+<<<<<<< HEAD
 import java.security.InvalidParameterException;
 
+=======
+>>>>>>> 7fc1b347d5239db6584ea6157cc6831c11a3ed14
 public class AddSensorResource extends CoapResource {
 
     private final static Logger logger = LoggerFactory.getLogger(AddSensorResource.class);
@@ -66,4 +73,8 @@ public class AddSensorResource extends CoapResource {
         response.setPayload("Đã nhận và xử lý payload thành công".getBytes());
         exchange.respond(response);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7fc1b347d5239db6584ea6157cc6831c11a3ed14

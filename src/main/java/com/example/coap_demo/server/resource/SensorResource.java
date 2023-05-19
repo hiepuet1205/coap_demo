@@ -3,15 +3,14 @@ package com.example.coap_demo.server.resource;
 
 import com.example.coap_demo.model.Sensor;
 import org.eclipse.californium.core.CoapResource;
-import org.eclipse.californium.core.Utils;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Response;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ public class SensorResource extends CoapResource {
     @Override
     public void handleGET(CoapExchange exchange) {
 
-        logger.info("Request Pretty Print:\n{}", Utils.prettyPrint(exchange.advanced().getRequest()));
+//        logger.info("Request Pretty Print:\n{}", Utils.prettyPrint(exchange.advanced().getRequest()));
 
         // Chuyển đối tượng JsonObject thành chuỗi JSON
         String jsonString = sensorsToJsonObject().toString();
@@ -98,7 +97,7 @@ public class SensorResource extends CoapResource {
         changed();
     }
 
-    private JSONObject sensorsToJsonObject() {
+    public JSONObject sensorsToJsonObject() {
         // Tạo đối tượng JSON
         JSONObject jsonObject = new JSONObject();
 

@@ -15,7 +15,7 @@ import java.util.TimerTask;
 
 import static com.example.coap_demo.client.CoapPostSensorProcess.SENSOR_LIST_URL;
 
-public class SensorThread implements Runnable{
+public class SensorThread implements Runnable {
     private Sensor sensor;
     private final static Logger logger = LoggerFactory.getLogger(SensorThread.class);
     private String SENSOR_URL;
@@ -28,7 +28,7 @@ public class SensorThread implements Runnable{
         this.sensorClient = new CoapClient(SENSOR_URL);
     }
 
-    private void getObserve(){
+    private void getObserve() {
         Request request = Request.newGet().setURI(this.SENSOR_URL).setObserve();
         request.setConfirmable(true);
 
@@ -121,7 +121,7 @@ public class SensorThread implements Runnable{
         };
 
         // Lên lịch cho công việc chạy sau mỗi 1 giây (1000 milliseconds)
-        timer.scheduleAtFixedRate(task, 0, 1000);
+        timer.scheduleAtFixedRate(task, 0, 5000);
     }
 
     @Override
