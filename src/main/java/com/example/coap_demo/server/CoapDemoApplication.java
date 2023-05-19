@@ -1,14 +1,14 @@
 package com.example.coap_demo.server;
 
 
-import com.example.coap_demo.server.resource.AddSensorResource;
-import com.example.coap_demo.server.resource.PerformanceResource;
-import com.example.coap_demo.server.resource.SensorResource;
 import org.eclipse.californium.core.CoapServer;
-import org.eclipse.californium.core.server.resources.Resource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.example.coap_demo.server.resource.AddSensorResource;
+import com.example.coap_demo.server.resource.PerformanceResource;
+import com.example.coap_demo.server.resource.SensorResource;
 
 @SpringBootApplication
 public class CoapDemoApplication {

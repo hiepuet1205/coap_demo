@@ -1,15 +1,6 @@
 package com.example.coap_demo.sensor;
 
 import com.example.coap_demo.model.Sensor;
-import org.eclipse.californium.core.CoapClient;
-import org.eclipse.californium.core.CoapResponse;
-import org.eclipse.californium.core.coap.CoAP;
-import org.eclipse.californium.core.coap.Request;
-import org.eclipse.californium.elements.exception.ConnectorException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.Date;
 
 
 public class CoapUtils {

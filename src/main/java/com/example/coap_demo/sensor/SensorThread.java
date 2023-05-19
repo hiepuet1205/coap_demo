@@ -1,7 +1,16 @@
 package com.example.coap_demo.sensor;
 
-import com.example.coap_demo.model.Sensor;
-import org.eclipse.californium.core.*;
+import static com.example.coap_demo.sensor.CoapUtils.SENSOR_LIST_URL;
+
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.eclipse.californium.core.CoapClient;
+import org.eclipse.californium.core.CoapHandler;
+import org.eclipse.californium.core.CoapObserveRelation;
+import org.eclipse.californium.core.CoapResponse;
+import org.eclipse.californium.core.Utils;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.Request;
 import org.eclipse.californium.elements.exception.ConnectorException;
@@ -9,11 +18,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static com.example.coap_demo.sensor.CoapUtils.SENSOR_LIST_URL;
+import com.example.coap_demo.model.Sensor;
 
 public class SensorThread implements Runnable {
     private Sensor sensor;

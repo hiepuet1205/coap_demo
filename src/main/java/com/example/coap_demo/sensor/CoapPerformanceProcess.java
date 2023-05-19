@@ -1,16 +1,16 @@
 package com.example.coap_demo.sensor;
 
+import java.io.IOException;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.Request;
 import org.eclipse.californium.elements.exception.ConnectorException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class CoapPerformanceProcess {
     private static final String COAP_SERVER_URL = "coap://localhost:5683/performance";
