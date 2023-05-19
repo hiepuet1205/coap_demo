@@ -27,7 +27,7 @@ public class SensorController {
 
     private static final String COAP_SERVER_URL = "coap://localhost:5683/sensor"; // Địa chỉ URL của server CoAP
     private static final String ADD_SENSOR_URL = "coap://localhost:5683/addSensor"; // Địa chỉ URL của server CoAP
-
+    private static final String DELAY_PACKET_URL = "coap://localhost:5683/delaySensor";
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public SensorController(SensorResource sensorResource) {

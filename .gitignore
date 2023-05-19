@@ -1,7 +1,9 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,node,java,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,node,java,python
-./.idea
+./.idea/
+
+./target/
 ### Java ###
 # Compiled class file
 *.class
