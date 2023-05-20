@@ -2,7 +2,7 @@
 
 ---
 
-# BÁO CÁO MÔ TẢ DỰ ÁN
+# BÁO CÁO MÔ TẢ CHƯƠNG TRÌNH
 
 ---
 
