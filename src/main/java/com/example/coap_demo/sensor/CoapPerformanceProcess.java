@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class CoapPerformanceProcess {
     private static final String COAP_SERVER_URL = "coap://localhost:5683/performance";
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         CoapClient client = new CoapClient(COAP_SERVER_URL);
 
         // Tạo đối tượng Timer

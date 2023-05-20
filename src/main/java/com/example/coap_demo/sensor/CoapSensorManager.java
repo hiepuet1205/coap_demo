@@ -10,6 +10,7 @@ public class CoapSensorManager {
     private final static Logger logger = LoggerFactory.getLogger(CoapSensorManager.class);
     private static int NUMBER_SENSOR = 0;
     private static final String COAP_SERVER_ADD_URL = "coap://localhost:5683/addSensor"; // Địa chỉ URI của server CoAP
+
     public static void main(String[] args) {
         CoapClient clientManager = new CoapClient(COAP_SERVER_ADD_URL);
 
@@ -34,7 +35,7 @@ public class CoapSensorManager {
                     CoapUtils coapUtils = new CoapUtils();
                     if (numberCreateSensor > 1) {
                         coapUtils.handleCreateManySensor(numberCreateSensor);
-                    } else if ( numberCreateSensor == 1) {
+                    } else if (numberCreateSensor == 1) {
                         coapUtils.handleCreateOneSensor();
                     }
 
@@ -49,7 +50,8 @@ public class CoapSensorManager {
             }
         });
 
-        // Observes the coap resource for 1000 seconds then the observing relation is deleted
+        // Observes the coap resource for 1000 seconds then the observing relation is
+        // deleted
         try {
             Thread.sleep(1000000);
         } catch (InterruptedException e) {
@@ -60,7 +62,7 @@ public class CoapSensorManager {
         relation.proactiveCancel();
     }
 
-    private static JSONObject stringToJsonObject(String content){
+    private static JSONObject stringToJsonObject(String content) {
         JSONObject jsonObject = new JSONObject(content);
         return jsonObject;
     }

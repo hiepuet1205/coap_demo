@@ -16,7 +16,7 @@ public class CoapUtils {
         sensorThread.start();
     }
 
-    public void handleCreateManySensor( int numberSensor) {
+    public void handleCreateManySensor(int numberSensor) {
         for (int i = 0; i < numberSensor; i++) {
             Sensor sensor = new Sensor("Sensor00" + (i + 1), 0.0); // Thay đổi giá trị cho từng Sensor tại đây
             NUM_ID_SENSORS++;
@@ -26,4 +26,3 @@ public class CoapUtils {
         }
     }
 }
-

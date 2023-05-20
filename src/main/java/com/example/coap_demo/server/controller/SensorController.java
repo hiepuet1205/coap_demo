@@ -38,8 +38,8 @@ public class SensorController {
     }
 
     @PutMapping(value = "/addSensor")
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.PUT})
-    public String addSensor(@RequestBody AddSensorData addSensorData){
+    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = { RequestMethod.PUT })
+    public String addSensor(@RequestBody AddSensorData addSensorData) {
         Long number = addSensorData.getNumber();
 
         CoapClient client = new CoapClient(ADD_SENSOR_URL);
@@ -66,8 +66,8 @@ public class SensorController {
     }
 
     @PutMapping(value = "/toggleSensor")
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.PUT})
-    public String toggleSensor(@RequestBody Sensor sensor){
+    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = { RequestMethod.PUT })
+    public String toggleSensor(@RequestBody Sensor sensor) {
         CoapClient client = new CoapClient(COAP_SERVER_URL + "/" + sensor.getId());
 
         System.out.println(sensor);
@@ -89,7 +89,7 @@ public class SensorController {
     }
 
     @GetMapping(value = "/observe", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET})
+    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = { RequestMethod.GET })
     public Flux<ServerSentEvent<String>> observeSensors() {
         // Tạo Flux<ServerSentEvent>
         return Flux.create(emitter -> {
@@ -123,7 +123,7 @@ public class SensorController {
     }
 
     @GetMapping(value = "/performance", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET})
+    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = { RequestMethod.GET })
     public Flux<ServerSentEvent<String>> observePerformance() {
         return Flux.create(emitter -> {
             CoapClient client = new CoapClient(COAP_PERFORMANCE_URL);

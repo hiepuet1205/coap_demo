@@ -1,6 +1,5 @@
 package com.example.coap_demo.server;
 
-
 import org.eclipse.californium.core.CoapServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +17,8 @@ public class CoapDemoApplication {
     }
 
     @Bean
-    public CoapServer coapServer(SensorResource sensorResource, AddSensorResource addSensorResource, PerformanceResource performanceResource) {
+    public CoapServer coapServer(SensorResource sensorResource, AddSensorResource addSensorResource,
+            PerformanceResource performanceResource) {
         CoapServer coapServer = new CoapServer();
         coapServer.add(sensorResource);
         coapServer.add(addSensorResource);

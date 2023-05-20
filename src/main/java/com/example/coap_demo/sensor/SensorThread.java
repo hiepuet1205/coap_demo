@@ -70,10 +70,10 @@ public class SensorThread implements Runnable {
         try {
             coapResp = sensorListClient.advanced(request);
 
-            //Pretty print for the received response
+            // Pretty print for the received response
             logger.info("Response Pretty Print: \n{}", Utils.prettyPrint(coapResp));
 
-            //The "CoapResponse" message contains the response.
+            // The "CoapResponse" message contains the response.
             String text = coapResp.getResponseText();
             logger.info("Payload: {}", text);
             logger.info("Message ID: " + coapResp.advanced().getMID());
@@ -102,15 +102,15 @@ public class SensorThread implements Runnable {
 
                 Boolean isRunning = sensor.getIsRunning();
 
-                if(isRunning){
+                if (isRunning) {
                     try {
                         coapResp = sensorClient.advanced(request);
 
-                        if(coapResp != null){
-                            //Pretty print for the received response
+                        if (coapResp != null) {
+                            // Pretty print for the received response
                             logger.info("Response Pretty Print: \n{}", Utils.prettyPrint(coapResp));
 
-                            //The "CoapResponse" message contains the response.
+                            // The "CoapResponse" message contains the response.
                             String text = coapResp.getResponseText();
                             logger.info("Payload: {}", text);
                             logger.info("Message ID: " + coapResp.advanced().getMID());
@@ -136,7 +136,7 @@ public class SensorThread implements Runnable {
         continuousPutToServer();
     }
 
-    private JSONObject stringToJsonObject(String content){
+    private JSONObject stringToJsonObject(String content) {
         JSONObject jsonObject = new JSONObject(content);
 
         return jsonObject;

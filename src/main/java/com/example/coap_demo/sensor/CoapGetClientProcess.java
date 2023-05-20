@@ -41,7 +41,8 @@ public class CoapGetClientProcess {
             }
         });
 
-        // Observes the coap resource for 1000 seconds then the observing relation is deleted
+        // Observes the coap resource for 1000 seconds then the observing relation is
+        // deleted
         try {
             Thread.sleep(1000000);
         } catch (InterruptedException e) {
