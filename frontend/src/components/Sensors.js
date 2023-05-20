@@ -13,7 +13,7 @@ const Sensors = () => {
     const handleNumSensorsChange = (event) => {
         setNumAddSensors(event.target.value)
     }
-
+// This function is executed when an event (such as a button click) occurs
     const handleConfirmClick = () => {
         const requestOptions = {
             method: 'PUT',

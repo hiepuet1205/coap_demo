@@ -30,7 +30,7 @@ const SensorCard = (props) => {
                 value: sensor.lastValue,
             }),
         }
-
+// Get log output to debug
         fetch('http://localhost:8080/api/toggleSensor', requestOptions)
             .then((data) => console.log(data))
             .catch((err) => console.error(err))
