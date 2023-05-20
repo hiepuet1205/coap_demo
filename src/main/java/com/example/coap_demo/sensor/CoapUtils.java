@@ -2,7 +2,7 @@ package com.example.coap_demo.sensor;
 
 import com.example.coap_demo.model.Sensor;
 
-
+// In summary, this CoapUtils class provides methods to handle the creation of one or multiple sensors. Each sensor is represented by a Sensor object and is run in a separate thread (SensorThread). The class is primarily focused on managing the creation and threading of CoAP sensors.
 public class CoapUtils {
     public static final String SENSOR_LIST_URL = "coap://localhost:5683/sensor/"; // Địa chỉ URI của server CoAP
 
